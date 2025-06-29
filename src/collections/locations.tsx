@@ -68,6 +68,7 @@ export const locationsCollection = buildCollection<LocationPage>({
     path: "locations_pages",
     icon: "LocationOn",
     group: "Business",
+    description: "Manage location pages with bulk import support",
     permissions: ({ authController, user }) => ({
         read: true,
         edit: true,
