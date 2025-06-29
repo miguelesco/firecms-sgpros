@@ -1,0 +1,120 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow public read access to FAQs
+    match /faqs/{document=**} {
+      allow read: if true;  
+      allow write: if false; 
+    }
+    
+    match /offers_pages/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /app_config/{document=**} {
+      allow read: if true;
+      allow write: if true;
+    }
+    
+    match /locations_pages/{document=**} {
+      allow read: if true;  
+      allow write: if false; 
+    }
+    
+    // ADD MISSING COLLECTIONS FOR FIRECMS
+    match /locations/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /offers/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /promotions/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    // END MISSING COLLECTIONS
+    
+    match /stripe_webhook_events/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /stripe_webhook_errors/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /charge_events/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /invoice_payments/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /invoice_payment_failures/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /home/{document=**} {
+      allow read: if true;  
+      allow write: if false; 
+    }
+    
+     match /jobber_credentials/{document=**} {
+      allow read, write: if true;
+    }
+    
+    match /leads/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /service_requests/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /pricing_rates/{document} {
+      allow read: if true;
+      allow write: if true; 
+    }
+    
+    match /pricing_ratesv2/{document} {
+      allow read: if true;
+      allow write: if true; 
+    }
+    
+    match /zipcodes/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /promo_codes/{document=**} {
+      allow read: if true;  
+      allow write: if true; 
+    }
+    
+    match /youtube/{document=**} {
+      allow read: if true;  
+      allow write: if false; 
+    }
+    
+    // Keep other rules as they are
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    // Custom default security rules for FireCMS. Modifying this rule will the usage of the FireCMS.
+    match /{document=**} {
+        allow read, write: if request.auth.token.fireCMSUser;
+    }
+  }
+} 
