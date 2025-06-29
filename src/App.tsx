@@ -30,7 +30,6 @@ import { CenteredView } from "@firecms/ui";
 import { locationsCollection } from "./collections/locations";
 import { offersCollection } from "./collections/offers";
 import { promotionsCollection } from "./collections/promotions";
-import { BulkLocationImport } from "./components/BulkLocationImport";
 
 import { firebaseConfig } from "./firebase_config";
 
