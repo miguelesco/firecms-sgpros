@@ -149,10 +149,110 @@ function App() {
 
                         return <Scaffold
                             autoOpenDrawer={false}>
-                            <AppBar title={"My demo app"}/>
+                            <AppBar title={"SGPros CMS"}/>
                             <Drawer/>
                             <NavigationRoutes/>
                             <SideDialogs/>
+                            {/* Floating Bulk Import Button */}
+                            <div style={{
+                                position: 'fixed',
+                                bottom: '24px',
+                                right: '24px',
+                                zIndex: 1000
+                            }}>
+                                <button
+                                    onClick={() => {
+                                        const importSection = document.getElementById('bulk-import-container');
+                                        if (importSection) {
+                                            importSection.style.display = importSection.style.display === 'none' ? 'block' : 'none';
+                                        } else {
+                                            // Create and show bulk import overlay
+                                            const overlay = document.createElement('div');
+                                            overlay.id = 'bulk-import-overlay';
+                                            overlay.style.cssText = `
+                                                position: fixed;
+                                                top: 0;
+                                                left: 0;
+                                                width: 100%;
+                                                height: 100%;
+                                                background: rgba(0,0,0,0.5);
+                                                z-index: 2000;
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                            `;
+                                            
+                                            const content = document.createElement('div');
+                                            content.id = 'bulk-import-container';
+                                            content.style.cssText = `
+                                                background: white;
+                                                border-radius: 8px;
+                                                max-width: 800px;
+                                                width: 90%;
+                                                max-height: 90%;
+                                                overflow-y: auto;
+                                                position: relative;
+                                            `;
+                                            
+                                                                                         content.innerHTML = `
+                                                 <div style="padding: 24px; text-align: center;">
+                                                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                                                         <h2 style="margin: 0; color: #2563eb;">🏢 Bulk Import Locations</h2>
+                                                         <button onclick="document.getElementById('bulk-import-overlay').remove()" 
+                                                                 style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+                                                     </div>
+                                                     
+                                                     <div style="margin-bottom: 24px;">
+                                                         <p style="margin-bottom: 16px; color: #6b7280; font-size: 18px;">
+                                                             Import multiple locations from a JSON file
+                                                         </p>
+                                                         <p style="margin-bottom: 24px; color: #374151;">
+                                                             Click the button below to open the dedicated bulk import tool.
+                                                         </p>
+                                                     </div>
+                                                     
+                                                     <div style="margin-bottom: 24px;">
+                                                         <button onclick="window.open('https://sgpros.web.app/import.html', '_blank')" 
+                                                                 style="padding: 12px 24px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600;">
+                                                             🚀 Open Bulk Import Tool
+                                                         </button>
+                                                     </div>
+                                                     
+                                                     <div style="background: #f3f4f6; padding: 16px; border-radius: 6px; text-align: left;">
+                                                         <p style="margin: 0; font-size: 14px; color: #374151;">
+                                                             <strong>💡 Quick Instructions:</strong><br/>
+                                                             1. Prepare a JSON file with your location data<br/>
+                                                             2. Use the format: [{"slug": "location-name", "title": {...}, "content": {...}, "services_areas": "..."}]<br/>
+                                                             3. Upload and import through the dedicated tool<br/>
+                                                             4. Return here to manage your imported locations
+                                                         </p>
+                                                     </div>
+                                                 </div>
+                                             `;
+                                             
+                                             overlay.appendChild(content);
+                                             document.body.appendChild(overlay);
+                                        }
+                                    }}
+                                    style={{
+                                        width: '60px',
+                                        height: '60px',
+                                        borderRadius: '50%',
+                                        background: '#2563eb',
+                                        color: 'white',
+                                        border: 'none',
+                                        cursor: 'pointer',
+                                        fontSize: '24px',
+                                        boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}
+                                    title="Bulk Import Locations"
+                                >
+                                    📁
+                                </button>
+                            </div>
                         </Scaffold>;
                     }}
                 </FireCMS>
