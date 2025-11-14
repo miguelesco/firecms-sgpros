@@ -26,6 +26,10 @@ export interface LocationPage {
         };
     };
     content: {
+        blurbText: {
+            text: string;
+            enabled: boolean;
+        };
         component2: {
             content: string;
             enabled: boolean;
@@ -175,6 +179,23 @@ export const locationsCollection = buildCollection<LocationPage>({
             name: "Content",
             dataType: "map",
             properties: {
+                blurbText: {
+                    name: "Blurb Text",
+                    dataType: "map",
+                    properties: {
+                        text: {
+                            name: "Text",
+                            dataType: "string",
+                            validation: { required: true },
+                            multiline: true
+                        },
+                        enabled: {
+                            name: "Enabled",
+                            dataType: "boolean",
+                            validation: { required: true }
+                        }
+                    }
+                },
                 component2: {
                     name: "Component 2",
                     dataType: "map",
