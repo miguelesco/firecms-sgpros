@@ -30,6 +30,7 @@ import { CenteredView } from "@firecms/ui";
 import { locationsCollection } from "./collections/locations";
 import { offersCollection } from "./collections/offers";
 import { promotionsCollection } from "./collections/promotions";
+import { quoteBoxCollection } from "./collections/quoteBox";
 
 import { firebaseConfig } from "./firebase_config";
 
@@ -58,7 +59,8 @@ function App() {
     const collections = useMemo(() => [
         locationsCollection,
         offersCollection,
-        promotionsCollection
+        promotionsCollection,
+        quoteBoxCollection
     ], []);
 
     const {
