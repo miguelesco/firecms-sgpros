@@ -31,6 +31,7 @@ import { locationsCollection } from "./collections/locations";
 import { offersCollection } from "./collections/offers";
 import { promotionsCollection } from "./collections/promotions";
 import { quoteBoxCollection } from "./collections/quoteBox";
+import { commercialFaqsCollection } from "./collections/commercialFaqs";
 
 import { firebaseConfig } from "./firebase_config";
 
@@ -60,7 +61,8 @@ function App() {
         locationsCollection,
         offersCollection,
         promotionsCollection,
-        quoteBoxCollection
+        quoteBoxCollection,
+        commercialFaqsCollection
     ], []);
 
     const {
