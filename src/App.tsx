@@ -32,6 +32,8 @@ import { offersCollection } from "./collections/offers";
 import { promotionsCollection } from "./collections/promotions";
 import { quoteBoxCollection } from "./collections/quoteBox";
 import { commercialFaqsCollection } from "./collections/commercialFaqs";
+import { resourcesPageCollection } from "./collections/resources_page";
+import { partnersCollection } from "./collections/partners";
 
 import { firebaseConfig } from "./firebase_config";
 
@@ -62,7 +64,9 @@ function App() {
         offersCollection,
         promotionsCollection,
         quoteBoxCollection,
-        commercialFaqsCollection
+        commercialFaqsCollection,
+        resourcesPageCollection,
+        partnersCollection
     ], []);
 
     const {
